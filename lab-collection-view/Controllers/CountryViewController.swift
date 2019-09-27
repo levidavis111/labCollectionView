@@ -32,6 +32,7 @@ class CountryViewController: UIViewController {
                 let countryVC = segue.destination as? CountryDetailViewController else {return}
             let oneCountry = countries[indexPath.row]
             countryVC.oneCountry = oneCountry
+            countryVC.currency = currency
         }
     }
     
@@ -80,8 +81,9 @@ extension CountryViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let oneCountry = countries[indexPath.row]
+       
         if let cell = countryCollectionView.dequeueReusableCell(withReuseIdentifier: "countryCell", for: indexPath) as? CountryCollectionViewCell {
-            cell.countryTextViewOutlet.text = "Name: \(oneCountry.name)\nCapital: \(oneCountry.capital)\nPopulation: \(oneCountry.population)\nCurrency: \(oneCountry.currencies[0].symbol) \(oneCountry.currencies[0].code)\nExchange: \(currency[oneCountry.currencies[0].code]!)"
+            cell.countryTextViewOutlet.text = "Name: \(oneCountry.name)\nCapital: \(oneCountry.capital)\nPopulation: \(oneCountry.population)\nCurrency: \(oneCountry.currencies[0].symbol) \(oneCountry.currencies[0].code)\nExchange: \(currency[oneCountry.currencies[0].code] ?? 0.0)"
             return cell
         }
         

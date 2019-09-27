@@ -11,6 +11,7 @@ import UIKit
 class CountryDetailViewController: UIViewController {
     
     var oneCountry: Country!
+    var currency: [String: Double]!
 
     @IBOutlet weak var flagImageViewOutlet: UIImageView!
     @IBOutlet weak var countryInfoTextViewOutlet: UITextView!
@@ -22,7 +23,7 @@ class CountryDetailViewController: UIViewController {
     
 
     private func setViews() {
-        countryInfoTextViewOutlet.text = "Country: \(oneCountry.name)\nPopulation: \(oneCountry.population)\nCurrency: \(oneCountry.currencies[0].symbol)\(oneCountry.currencies[0].code)"
+        countryInfoTextViewOutlet.text = "Country: \(oneCountry.name)\nPopulation: \(oneCountry.population)\nCurrency: \(oneCountry.currencies[0].symbol)\(oneCountry.currencies[0].code)\nExchange rate pegged to Euro: \(currency[oneCountry.currencies[0].code]!)"
     }
 
 }
